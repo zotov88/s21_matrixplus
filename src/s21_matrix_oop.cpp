@@ -227,9 +227,11 @@ S21Matrix S21Matrix::InverseMatrix() const {
   S21Matrix result = S21Matrix(rows_, cols_);
   if (rows_ == 1) {
     result(0, 0) = 1 / (*this)(0, 0);
-  } else {
+  } else if (Determinant() != 0) {
     result = CalcComplements().Transpose();
     result.MulNumber(1 / Determinant());
+  } else {
+    throw std::logic_error("Determinant = 0");
   }
   return result;
 }

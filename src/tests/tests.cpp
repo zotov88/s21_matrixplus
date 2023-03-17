@@ -438,6 +438,11 @@ TEST(test, inverse_5) {
   EXPECT_THROW(m.InverseMatrix(), std::logic_error);
 }
 
+TEST(test, inverse_6) {
+  S21Matrix m = S21Matrix(2, 2);
+  EXPECT_THROW(m.InverseMatrix(), std::logic_error);
+}
+
 TEST(test, operator_brackets_1) {
   S21Matrix m = S21Matrix(3, 3);
   EXPECT_THROW(m(-1, 1), std::out_of_range);
