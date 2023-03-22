@@ -106,10 +106,10 @@ void S21Matrix::SumOrSubMatrix_(const S21Matrix& other, char sign) {
   if (!this->IsEqSizeMatrix_(other)) {
     throw std::logic_error("Matrixes are not equals");
   }
+  int num = (sign == '-') ? -1 : 1;
   for (int i = 0; i < rows_; i++) {
     for (int j = 0; j < cols_; j++) {
-      (*this)(i, j) = (sign == '+') ? (*this)(i, j) + other(i, j)
-                                    : (*this)(i, j) - other(i, j);
+      (*this)(i, j) += num * other(i, j);
     }
   }
 }
